@@ -7,11 +7,12 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "strict": true,
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false,    
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,    
   },
+  "include": ["src/**/*.ts"],
   "ts-node": {
     "esm": true
   },

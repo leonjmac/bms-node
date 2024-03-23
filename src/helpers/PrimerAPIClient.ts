@@ -9,12 +9,14 @@ const client = axios.create({
   }
 })
 
-const executeRequest = async (method: Method, url: string, data?: Object, version: number = 2.2, idempotent?: boolean) => {
+const executeRequest = async (method: Method, url: string, data?: Object, version?: number, idempotent?: boolean) => {
   try {
+    if (version === undefined) version = Number(process.env.PRIMER_API_VERSION!)
     const response = await client.request({
       headers: {
         'X-Api-Version': version,
-        'X-Idempotency-Key': idempotent ? uuid() : undefined
+        'X-Idempotency-Key': idempotent ? uuid() : undefined,
+        'legacy-workflows': false
       },
       method,
       url,
@@ -29,4 +31,3 @@ const executeRequest = async (method: Method, url: string, data?: Object, versio
 }
 
 export { executeRequest }
-

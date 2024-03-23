@@ -6,7 +6,7 @@ import { attemptDatabaseConnection } from './src/middlewares/db-connector'
 
 const start = async () => {
   try {
-    await attemptDatabaseConnection()
+    // await attemptDatabaseConnection()
     app.listen(process.env.PORT, () => {
       console.log(`Success - node-ts is running on port ${process.env.PORT}!`)
     })

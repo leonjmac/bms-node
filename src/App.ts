@@ -6,6 +6,7 @@ import { BraintreeGraphQLController } from './controllers/BraintreeGraphQL/Brain
 import { BraintreeTransactionController } from './controllers/BraintreeSDK/BTTransactionController'
 
 import { ClientSessionController } from './controllers/Primer/ClientSessionController'
+import { PaymentMethodsController } from './controllers/Primer/PaymentMethodsController'
 import { PaymentsController } from './controllers/Primer/PaymentsController'
 
 import { InvalidRouteError } from './classes/InvalidRouteError'
@@ -22,6 +23,7 @@ app.use('/braintree/transaction', BraintreeTransactionController)
 
 // PRIMER ROUTES
 app.use('/primer/client-session', ClientSessionController)
+app.use('/primer/payment-methods', PaymentMethodsController)
 app.use('/primer/payments', PaymentsController)
 
 // GENERIC ERROR HANDLER FOR UNMATCHED ROUTES

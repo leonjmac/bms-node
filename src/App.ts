@@ -4,7 +4,9 @@ import cors from 'cors'
 
 import { BraintreeGraphQLController } from './controllers/BraintreeGraphQL/BraintreeGraphQLController'
 import { BraintreeTransactionController } from './controllers/BraintreeSDK/BTTransactionController'
+
 import { ClientSessionController } from './controllers/Primer/ClientSessionController'
+import { PaymentsController } from './controllers/Primer/PaymentsController'
 
 import { InvalidRouteError } from './classes/InvalidRouteError'
 
@@ -20,6 +22,7 @@ app.use('/braintree/transaction', BraintreeTransactionController)
 
 // PRIMER ROUTES
 app.use('/primer/client-session', ClientSessionController)
+app.use('/primer/payments', PaymentsController)
 
 // GENERIC ERROR HANDLER FOR UNMATCHED ROUTES
 app.use('*', () => {

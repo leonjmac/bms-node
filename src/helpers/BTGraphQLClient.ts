@@ -7,10 +7,10 @@ const authorization = Buffer.from(
 ).toString('base64')
 
 const client = axios.create({
-  baseURL: 'https://api.sandbox.braintreegateway.com/graphql',
+  baseURL: process.env.BRAINTREE_GRAPHQL_ENDPOINT!,
   headers: {
-    Authorization: `Basic ${authorization}`,    
-    'Braintree-Version': '2022-02-22'
+    Authorization: `Basic ${authorization}`,
+    'Braintree-Version': `${process.env.BRAINTREE_GRAPHQL_VERSION!}`
   }
 })
 

@@ -25,7 +25,7 @@ const log = (level: AppLoggerLevel, message: string) => {
           format.simple()
         )
       }),
-      new transports.File({ filename: `${level}.log`, level })
+      new transports.File({ filename: `logs/${level}.log`, level })
     ],
   }).log({
     level,

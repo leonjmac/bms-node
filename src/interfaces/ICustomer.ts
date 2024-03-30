@@ -6,6 +6,7 @@ export interface ICustomer {
   forename: string
   surname: string
   email: string
+  dateOfBirth?: Date
   billingAddress?: IAddress[]
   shippingAddress?: IAddress[]
   // Array of order IDs

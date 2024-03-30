@@ -1,7 +1,9 @@
+import ISOCurrencyCode from './ISOCurrencyCode'
+
 export interface ITransaction {
   id: string
   amount: number
-  currency: string
+  currency: ISOCurrencyCode
   platform: ITransactionPlatform
   paymentMethod: string
   paymentMethodDetail: string

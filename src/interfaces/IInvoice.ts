@@ -1,4 +1,5 @@
 import { IAddress } from './IAddress'
+import { IProduct } from './IProduct'
 
 export interface IInvoice {
   id: string
@@ -7,22 +8,14 @@ export interface IInvoice {
   billingAddress?: IAddress
   shippingAddress?: IAddress
   items: IInvoiceItem[]
-  total: number
-  discount?: number
-  currency: string
   transactionId?: string
   status: IInvoiceStatus
   createdAt: Date
   updatedAt?: Date
 }
 
-export interface IInvoiceItem {
-  id: string
-  description: string
+export interface IInvoiceItem extends IProduct {
   quantity: number
-  unitPrice: number
-  discountPrice?: number
-  total: number
 }
 
 export enum IInvoiceStatus {

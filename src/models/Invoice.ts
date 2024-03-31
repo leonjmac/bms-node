@@ -1,20 +1,23 @@
 import mongoose from 'mongoose'
 import { AppLogger, AppLoggerLevel } from '../middlewares/app-logger'
-import { IInvoice } from '../interfaces/IInvoice'
+import { IInvoice, IInvoiceAttrs, IInvoiceItem } from '../interfaces/IInvoice'
 
-interface InvoiceAttrs extends IInvoice {}
+interface InvoiceAttrs extends IInvoiceAttrs {}
 
 interface IInvoiceModel extends mongoose.Model<InvoiceDoc> {
   build(attrs: InvoiceAttrs): InvoiceDoc
 }
-export interface InvoiceDoc extends mongoose.Document {}
+
+export interface InvoiceDoc extends IInvoice {}
+
 const InvoiceSchema = new mongoose.Schema({
   reference: {
     type: String,
     required: [true, 'Please provide a reference.']
   },
-  customerId: {
-    type: String,
+  customer: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Customer',
     required: [true, 'Please provide a customer ID.']
   },
   billingAddress: {
@@ -27,16 +30,27 @@ const InvoiceSchema = new mongoose.Schema({
     type: Array,
     required: [true, 'Please provide at least one item.']
   },
-  transactionId: {
-    type: String
+  transaction: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Transaction'
   },
   status: {
     type: Number,
     required: [true, 'Please provide a status.']
   },
+  total: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: (v: number) => v >= 0,
+      message: 'Total must be greater than or equal to 0.'
+    },
+    default: 0
+  },
   createdAt: {
     type: Number,
-    required: [true, 'Please provide a creation date.']
+    required: true,
+    default: Date.now()
   },
   updatedAt: {
     type: Number
@@ -48,6 +62,7 @@ const InvoiceSchema = new mongoose.Schema({
     ret.id = ret._id
     ret.createdAt = new Date(ret.createdAt)
     ret.updatedAt = new Date(ret.updatedAt)
+
     delete ret._id
     delete ret.user_id
   },
@@ -68,11 +83,12 @@ InvoiceSchema.pre('save', async function (done) {
     this.createdAt = Date.now()
     AppLogger(AppLoggerLevel.INFO, `Creating new Invoice (${this._id}).`)
   }
+  this.total = this.items.reduce((acc: number, item: IInvoiceItem) => acc + ((item.baseUnitPrice - (item.discountUnitPrice ?? 0)) * item.quantity), 0)
+  this.updatedAt = Date.now()
   done()  
 })
 
 InvoiceSchema.post('save', (doc: InvoiceDoc) => {
-  doc.set('updatedAt', Date.now())
   AppLogger(AppLoggerLevel.INFO, `Invoice ${doc._id} has been saved.`)
 })
 

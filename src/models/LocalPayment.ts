@@ -1,38 +1,39 @@
 import mongoose from 'mongoose'
 import { AppLogger, AppLoggerLevel } from '../middlewares/app-logger'
-import { ILocalPayment } from '../interfaces/ILocalPayment'
+import { ILocalPayment, ILocalPaymentAttrs } from '../interfaces/ILocalPayment'
 
-interface LocalPaymentAttrs extends ILocalPayment {}
+interface LocalPaymentAttrs extends ILocalPaymentAttrs {}
 
 interface ILocalPaymentModel extends mongoose.Model<LocalPaymentDoc> {
   build(attrs: LocalPaymentAttrs): LocalPaymentDoc
 }
 
-export interface LocalPaymentDoc extends mongoose.Document {}
+export interface LocalPaymentDoc extends ILocalPayment {}
 
 const LocalPaymentSchema = new mongoose.Schema({
-    referenceId: {
-      type: String,
-      required: true
-    },
-    referenceType: {
-      type: Number,
-      required: true
-    },
-    status: {
-      type: Number,
-      required: true
-    },
-    merchantAccountId: {
-      type: String
-    },
-    createdAt: {
-      type: Number,
-      required: true
-    },
-    updatedAt: {
-      type: Number
-    }
+  referenceId: {
+    type: String,
+    required: true
+  },
+  referenceType: {
+    type: Number,
+    required: true
+  },
+  status: {
+    type: Number,
+    required: true
+  },
+  merchantAccountId: {
+    type: String
+  },
+  createdAt: {
+    type: Number,
+    required: true,
+    default: Date.now()
+  },
+  updatedAt: {
+    type: Number
+  }
 },{
   toJSON: {
     virtuals: true,
@@ -60,11 +61,11 @@ LocalPaymentSchema.pre('save', async function (done) {
     this.createdAt = Date.now()
     AppLogger(AppLoggerLevel.INFO, `Creating new LocalPayment (${this._id}).`)
   }
+  this.updatedAt = Date.now()
   done()  
 })
 
 LocalPaymentSchema.post('save', (doc: LocalPaymentDoc) => {
-  doc.set('updatedAt', Date.now())
   AppLogger(AppLoggerLevel.INFO, `LocalPayment ${doc._id} has been saved.`)
 })
 

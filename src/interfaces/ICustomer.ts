@@ -1,18 +1,22 @@
+import { Document } from 'mongoose'
 import { IAddress } from './IAddress'
+import { IOrder } from './IOrder'
+import { IInvoice } from './IInvoice'
 
-export interface ICustomer {
-  id: string
+export interface ICustomerAttrs {
   references?: ICustomerReference[]
   forename: string
   surname: string
   email: string
   dateOfBirth?: Date
   billingAddress?: IAddress[]
-  shippingAddress?: IAddress[]
-  // Array of order IDs
-  orders?: string[]
-  // Array of invoice IDs
-  invoices?: string[]
+  shippingAddress?: IAddress[]  
+  orders?: IOrder[]
+  invoices?: IInvoice[]
+}
+
+export interface ICustomer extends ICustomerAttrs, Document {
+  id: string
   createdAt: Date
   updatedAt?: Date
 }

@@ -1,21 +1,23 @@
 import mongoose from 'mongoose'
 import { AppLogger, AppLoggerLevel } from '../middlewares/app-logger'
-import { IOrder } from '../interfaces/IOrder'
+import { IOrder, IOrderAttrs, IOrderItem } from '../interfaces/IOrder'
 
-interface OrderAttrs extends IOrder {}
+interface OrderAttrs extends IOrderAttrs {}
 
 interface IOrderModel extends mongoose.Model<OrderDoc> {
   build(attrs: OrderAttrs): OrderDoc
 }
-export interface OrderDoc extends mongoose.Document {}
+
+export interface OrderDoc extends IOrder {}
+
 const OrderSchema = new mongoose.Schema({
   reference: {
     type: String,
     required: [true, 'Please provide a reference.']
   },
-  customerId: {
-    type: String,
-    required: [true, 'Please provide a customer ID.']
+  customer: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Customer'
   },
   billingAddress: {
     type: Object
@@ -31,12 +33,23 @@ const OrderSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Please provide a status.']
   },
-  transactionId: {
-    type: String
+  transaction: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Transaction'
+  },
+  total: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: (v: number) => v >= 0,
+      message: 'Total must be greater than or equal to 0.'
+    },
+    default: 0
   },
   createdAt: {
     type: Number,
-    required: [true, 'Please provide a creation date.']
+    required: true,
+    default: Date.now()
   },
   updatedAt: {
     type: Number
@@ -68,11 +81,12 @@ OrderSchema.pre('save', async function (done) {
     this.createdAt = Date.now()
     AppLogger(AppLoggerLevel.INFO, `Creating new Order (${this._id}).`)
   }
+  this.total = this.items.reduce((acc: number, item: IOrderItem) => acc + ((item.baseUnitPrice - (item.discountUnitPrice ?? 0)) * item.quantity), 0)
+  this.updatedAt = Date.now()
   done()  
 })
 
 OrderSchema.post('save', (doc: OrderDoc) => {
-  doc.set('updatedAt', Date.now())
   AppLogger(AppLoggerLevel.INFO, `Order ${doc._id} has been saved.`)
 })
 

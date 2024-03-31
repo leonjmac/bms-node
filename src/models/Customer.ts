@@ -1,13 +1,15 @@
 import mongoose from 'mongoose'
 import { AppLogger, AppLoggerLevel } from '../middlewares/app-logger'
-import { ICustomer } from '../interfaces/ICustomer'
+import { ICustomer, ICustomerAttrs } from '../interfaces/ICustomer'
 
-interface CustomerAttrs extends ICustomer {}
+interface CustomerAttrs extends ICustomerAttrs {}
 
 interface ICustomerModel extends mongoose.Model<CustomerDoc> {
   build(attrs: CustomerAttrs): CustomerDoc
 }
-export interface CustomerDoc extends mongoose.Document {}
+
+export interface CustomerDoc extends ICustomer {}
+
 const CustomerSchema = new mongoose.Schema({
   references: {
     type: Array
@@ -25,7 +27,7 @@ const CustomerSchema = new mongoose.Schema({
     required: [true, 'Please provide an email.']
   },
   dateOfBirth: {
-    type: Date
+    type: Number
   },
   billingAddress: {
     type: Array
@@ -34,14 +36,15 @@ const CustomerSchema = new mongoose.Schema({
     type: Array
   },
   orders: {
-    type: Array
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }]
   },
   invoices: {
-    type: Array
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Invoice' }]
   },
   createdAt: {
     type: Number,
-    required: true
+    required: true,
+    default: Date.now()
   },
   updatedAt: {
     type: Number
@@ -53,6 +56,7 @@ const CustomerSchema = new mongoose.Schema({
     ret.id = ret._id
     ret.createdAt = new Date(ret.createdAt)
     ret.updatedAt = new Date(ret.updatedAt)
+    if(ret.dateOfBirth) { ret.dateOfBirth = new Date(ret.dateOfBirth) }
     delete ret._id
     delete ret.user_id
   },
@@ -73,11 +77,11 @@ CustomerSchema.pre('save', async function (done) {
     this.createdAt = Date.now()
     AppLogger(AppLoggerLevel.INFO, `Creating new Customer (${this._id}).`)
   }
+  this.updatedAt = Date.now()
   done()  
 })
 
 CustomerSchema.post('save', (doc: CustomerDoc) => {
-  doc.set('updatedAt', Date.now())
   AppLogger(AppLoggerLevel.INFO, `Customer ${doc._id} has been saved.`)
 })
 

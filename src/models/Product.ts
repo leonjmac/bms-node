@@ -1,13 +1,15 @@
 import mongoose from 'mongoose'
 import { AppLogger, AppLoggerLevel } from '../middlewares/app-logger'
-import { IProduct } from '../interfaces/IProduct'
+import { IProduct, IProductAttrs } from '../interfaces/IProduct'
 
-interface ProductAttrs extends IProduct {}
+interface ProductAttrs extends IProductAttrs {}
 
 interface IProductModel extends mongoose.Model<ProductDoc> {
   build(attrs: ProductAttrs): ProductDoc
 }
-export interface ProductDoc extends mongoose.Document {}
+
+export interface ProductDoc extends IProduct {}
+
 const ProductSchema = new mongoose.Schema({
   description: {
     type: String,
@@ -61,7 +63,8 @@ const ProductSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Number,
-    required: true
+    required: true,
+    default: Date.now()
   },
   updatedAt: {
     type: Number
@@ -93,11 +96,11 @@ ProductSchema.pre('save', async function (done) {
     this.createdAt = Date.now()
     AppLogger(AppLoggerLevel.INFO, `Creating new Product (${this._id}).`)
   }
+  this.updatedAt = Date.now()
   done()  
 })
 
 ProductSchema.post('save', (doc: ProductDoc) => {
-  doc.set('updatedAt', Date.now())
   AppLogger(AppLoggerLevel.INFO, `Product ${doc._id} has been saved.`)
 })
 

@@ -1,22 +1,27 @@
+import { Document } from 'mongoose'
 import { IAddress } from './IAddress'
-import { IProduct } from './IProduct'
+import { ICustomer } from './ICustomer'
+import { ILineItem } from './ILineItem'
+import { ITransaction } from './ITransaction'
 
-export interface IInvoice {
-  id: string
+export interface IInvoiceAttrs {
   reference: string
-  customerId: string
+  customer: ICustomer
   billingAddress?: IAddress
   shippingAddress?: IAddress
   items: IInvoiceItem[]
-  transactionId?: string
+  total: number
+  transaction?: ITransaction
   status: IInvoiceStatus
+}
+
+export interface IInvoice extends IInvoiceAttrs, Document {
+  id: string
   createdAt: Date
   updatedAt?: Date
 }
 
-export interface IInvoiceItem extends IProduct {
-  quantity: number
-}
+export interface IInvoiceItem extends ILineItem {}
 
 export enum IInvoiceStatus {
   draft,

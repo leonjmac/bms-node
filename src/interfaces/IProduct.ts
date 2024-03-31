@@ -1,7 +1,7 @@
+import { Document } from 'mongoose'
 import ISOCurrencyCode from './ISOCurrencyCode'
 
-export interface IProduct {
-  id: string
+export interface IProductAttrs {
   description: string
   category: number
   promote?: boolean
@@ -13,6 +13,10 @@ export interface IProduct {
   url?: string
   isCollectable?: boolean
   isDeliverable?: boolean
+}
+
+export interface IProduct extends IProductAttrs, Document {
+  id: string
   createdAt: Date
   updatedAt?: Date
 }

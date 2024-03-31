@@ -1,13 +1,17 @@
+import { Document } from 'mongoose'
 import ISOCurrencyCode from './ISOCurrencyCode'
 
-export interface ITransaction {
-  id: string
+export interface ITransactionAttrs {
   amount: number
   currency: ISOCurrencyCode
   platform: ITransactionPlatform
   paymentMethod: string
-  paymentMethodDetail: string
+  paymentMethodDetails: string
   status: ITransactionStatus
+}
+
+export interface ITransaction extends ITransactionAttrs, Document {
+  id: string
   createdAt: Date
   updatedAt?: Date
 }

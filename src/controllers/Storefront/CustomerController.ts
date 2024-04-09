@@ -1,4 +1,6 @@
 import Customer from '../../models/Customer'
+import Order from '../../models/Order'
+import Invoice from '../../models/Invoice'
 import { ICustomerAttrs } from '../../interfaces/ICustomer'
 
 const registerCustomer = async (data: ICustomerAttrs) => {
@@ -9,15 +11,22 @@ const registerCustomer = async (data: ICustomerAttrs) => {
   }
 }
 
-const fetchCustomer = async (id: string) => {
+const fetchCustomer = async (id: string, withOrders?: boolean, withInvoices?: boolean) => {
   try {
-    return await Customer.findById(id)
+    const customer = await Customer.findById(id)
+    if(customer && withOrders) {
+      await customer.populate({ path: 'orders', model: Order })
+    }
+    if(customer && withInvoices) {
+      await customer.populate({ path: 'invoices', model: Invoice })
+    }    
+    return customer
   } catch (err) {
     throw err
   }
 }
 
-const fetchCustomers = async () => {
+const fetchCustomers = async (withOrders?: boolean, withInvoices?: boolean) => {
   try {
     return await Customer.find({})
   } catch (err) {

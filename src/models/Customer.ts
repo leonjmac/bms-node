@@ -51,20 +51,20 @@ const CustomerSchema = new mongoose.Schema({
   }
 },{
   toJSON: {
-  virtuals: true,
-  transform(doc, ret) {
-    ret.id = ret._id
-    ret.createdAt = new Date(ret.createdAt)
-    ret.updatedAt = new Date(ret.updatedAt)
-    if(ret.dateOfBirth) { ret.dateOfBirth = new Date(ret.dateOfBirth) }
-    delete ret._id
-    delete ret.user_id
+    virtuals: true,
+    transform(doc, ret) {
+      ret.id = ret._id
+      ret.createdAt = new Date(ret.createdAt)
+      ret.updatedAt = new Date(ret.updatedAt)
+      if(ret.dateOfBirth) { ret.dateOfBirth = new Date(ret.dateOfBirth) }
+      delete ret._id
+      delete ret.user_id
+    },
+    versionKey: false
   },
-  versionKey: false
-  },
-  toObject: {
-  virtuals: true,
-  versionKey: false
+    toObject: {
+    virtuals: true,
+    versionKey: false
   }
 })
 

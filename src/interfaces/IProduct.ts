@@ -3,7 +3,7 @@ import ISOCurrencyCode from './ISOCurrencyCode'
 
 export interface IProductAttrs {
   description: string
-  category: number
+  category: IProductCategory
   promote?: boolean
   sku: string
   baseUnitPrice: number
@@ -13,6 +13,14 @@ export interface IProductAttrs {
   url?: string
   isCollectable?: boolean
   isDeliverable?: boolean
+}
+
+export enum IProductCategory {
+  audio,
+  crypto,
+  game,
+  gambling,
+  video
 }
 
 export interface IProduct extends IProductAttrs, Document {

@@ -57,20 +57,20 @@ const InvoiceSchema = new mongoose.Schema({
   }
 },{
   toJSON: {
-  virtuals: true,
-  transform(doc, ret) {
-    ret.id = ret._id
-    ret.createdAt = new Date(ret.createdAt)
-    ret.updatedAt = new Date(ret.updatedAt)
+    virtuals: true,
+    transform(doc, ret) {
+      ret.id = ret._id
+      ret.createdAt = new Date(ret.createdAt)
+      ret.updatedAt = new Date(ret.updatedAt)
 
-    delete ret._id
-    delete ret.user_id
-  },
-  versionKey: false
+      delete ret._id
+      delete ret.user_id
+    },
+    versionKey: false
   },
   toObject: {
-  virtuals: true,
-  versionKey: false
+    virtuals: true,
+    versionKey: false
   }
 })
 

@@ -28,7 +28,28 @@ const fetchCustomer = async (id: string, withOrders?: boolean, withInvoices?: bo
 
 const fetchCustomers = async (withOrders?: boolean, withInvoices?: boolean) => {
   try {
-    return await Customer.find({})
+    const customers = await Customer.find({})
+    if(!customers) { return [] }
+
+    return Promise.all(customers.map(async (customer) => {
+      if(withOrders) {
+        await customer.populate({ path: 'orders', model: Order })
+      }
+      if(withInvoices) {
+        await customer.populate({ path: 'invoices', model: Invoice })
+      }
+    })).then(() => {
+      return customers
+    })
+
+
+    // if(customers && withOrders) {
+    //   await Customer.populate(customers, { path: 'orders', model: Order })
+    // }
+    // if(customers && withInvoices) {
+    //   await Customer.populate(customers, { path: 'invoices', model: Invoice })
+    // }    
+    // return customers
   } catch (err) {
     throw err
   }

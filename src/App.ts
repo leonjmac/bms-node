@@ -12,6 +12,7 @@ import { PaymentsController } from './controllers/Primer/PaymentsController'
 import { InvalidRouteError } from './classes/InvalidRouteError'
 
 import { errorHandler } from './middlewares/error-handler'
+import { StorefrontController } from './controllers/Storefront/StorefrontController'
 
 const app = express()
 app.use(cors())
@@ -25,6 +26,9 @@ app.use('/braintree/transaction', BraintreeTransactionController)
 app.use('/primer/client-session', ClientSessionController)
 app.use('/primer/payment-methods', PaymentMethodsController)
 app.use('/primer/payments', PaymentsController)
+
+// STOREFRONT ROUTES
+app.use('/storefront', StorefrontController)
 
 // GENERIC ERROR HANDLER FOR UNMATCHED ROUTES
 app.use('*', () => {

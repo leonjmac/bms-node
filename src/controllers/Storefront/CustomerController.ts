@@ -41,15 +41,6 @@ const fetchCustomers = async (withOrders?: boolean, withInvoices?: boolean) => {
     })).then(() => {
       return customers
     })
-
-
-    // if(customers && withOrders) {
-    //   await Customer.populate(customers, { path: 'orders', model: Order })
-    // }
-    // if(customers && withInvoices) {
-    //   await Customer.populate(customers, { path: 'invoices', model: Invoice })
-    // }    
-    // return customers
   } catch (err) {
     throw err
   }

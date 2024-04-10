@@ -2,6 +2,14 @@ import { IInvoiceAttrs } from '../../interfaces/IInvoice'
 import { IOrderAttrs } from '../../interfaces/IOrder'
 import { ITransactionPlatform } from '../../interfaces/ITransaction'
 
+const setupCheckout = async (data: IInvoiceAttrs | IOrderAttrs, platform: ITransactionPlatform) => {
+  try {
+    /// Do something
+  } catch (err) {
+    throw err
+  }
+}
+
 const createTransaction = async (data: IInvoiceAttrs | IOrderAttrs, platform: ITransactionPlatform) => {
   try {
     switch (platform) {
@@ -29,4 +37,4 @@ const createTransaction = async (data: IInvoiceAttrs | IOrderAttrs, platform: IT
   }
 }
 
-export { createTransaction }
+export { setupCheckout, createTransaction }

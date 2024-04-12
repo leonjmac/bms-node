@@ -65,8 +65,7 @@ const uniquePayPalAccountCheck = async (req: Request, res: Response) => {
         return reference.type === ICustomerReferenceType.paypal && reference.reference === req.params['id']
       })
     })
-
-    res.status(customer.length > 0 ? 200 : 204).send({ customer })
+    res.status(200).send({ registered: customer.length > 0 })
   } catch (err) {
     throw err
   }

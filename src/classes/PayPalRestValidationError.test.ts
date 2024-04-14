@@ -1,8 +1,9 @@
 import { PayPalRestValidationError } from './PayPalRestValidationError'
 import { IPayPalRestValidationError } from '../interfaces/IPayPalRestValidationError'
 import { CustomError } from './CustomError'
+import { test } from 'tap'
 
-describe('PayPalRestValidationError', () => {
+test('PayPalRestValidationError', (t) => {
   const code = 400
   const error = {
     name: 'VALIDATION_ERROR',
@@ -18,23 +19,13 @@ describe('PayPalRestValidationError', () => {
 
   const e = new PayPalRestValidationError(code, error)
 
-  it('should create an instance of "PayPalRestValidationError" which is a subclass of "CustomError"', () => {
-    expect(e).toBeInstanceOf(CustomError);
-  })
-
-  it('should return 400', () => {
-    expect(e).toHaveProperty('statusCode', code)
-  })
-
-  it('should return correct message', () => {
-    expect(e).toHaveProperty('message', `${error.message}`)
-  })
-
-  it('should serialize errors', () => {
-    expect(e.serializeErrors()).toMatchObject({
-      code,
-      message: `${error.name} - ${error.message}\nDebug ID: ${error.debugId}`,
-      reasons: error.details
-    })
-  })
+  t.ok(e instanceof CustomError, 'should be instance of CustomError')
+  t.equal(e.statusCode, code, 'should return 400')
+  t.equal(e.message, `${error.message}`, 'should return correct message')
+  t.same(e.serializeErrors(), { 
+    code, 
+    message: `${error.name} - ${error.message}\nDebug ID: ${error.debugId}`,
+    reasons: error.details
+  }, 'should serialize errors')
+  t.end()
 })

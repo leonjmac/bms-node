@@ -1,0 +1,10 @@
+TAP version 14
+# Subtest: PayPalRestValidationError
+    ok 1 - should be instance of CustomError
+    ok 2 - should return 400
+    ok 3 - should return correct message
+    ok 4 - should serialize errors
+    1..4
+ok 1 - PayPalRestValidationError # time=17.187ms
+
+1..1

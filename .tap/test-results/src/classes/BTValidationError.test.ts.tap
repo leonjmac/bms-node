@@ -1,0 +1,10 @@
+TAP version 14
+# Subtest: BTValidationError
+    ok 1 - should be instance of CustomError
+    ok 2 - should return 400
+    ok 3 - should return correct message
+    ok 4 - should serialize errors
+    1..4
+ok 1 - BTValidationError # time=12.595ms
+
+1..1

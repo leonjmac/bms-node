@@ -69,6 +69,6 @@ LocalPaymentSchema.post('save', (doc: LocalPaymentDoc) => {
   AppLogger(AppLoggerLevel.INFO, `LocalPayment ${doc._id} has been saved.`)
 })
 
-const LocalPayment = mongoose.model<LocalPaymentDoc, ILocalPaymentModel>('LocalPayment', LocalPaymentSchema)
+const LocalPayment = mongoose.model<LocalPaymentDoc, ILocalPaymentModel>('Local_Payment', LocalPaymentSchema)
 
 export default LocalPayment

@@ -1,0 +1,239 @@
+{
+  "date": "2024-04-14T00:14:04.200Z",
+  "argv": [
+    "/Users/leonj/.nvm/versions/node/v18.19.1/bin/node",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/src/classes/BTResponseError.test.ts"
+  ],
+  "execArgv": [
+    "--import=file:///Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
+    "--import=file:///Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/import.mjs",
+    "--enable-source-maps",
+    "--import=file:///Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/processinfo/dist/esm/import.mjs"
+  ],
+  "NODE_OPTIONS": "\"--import=file:///Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/processinfo/dist/esm/import.mjs\"",
+  "cwd": "/Users/leonj/Development/bigmacstore/server-apps/node",
+  "pid": 67828,
+  "ppid": 67796,
+  "parent": null,
+  "uuid": "505fd0d0-ea3c-4bd5-90d7-be0576425e91",
+  "files": [
+    "/Users/leonj/Development/bigmacstore/server-apps/node/src/classes/BTResponseError.test.ts",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/read-json.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/glob.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/has-magic.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/brace-expansion/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/assert-valid-pattern.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/ast.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/escape.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/path-scurry/dist/esm/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/pattern.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/lru-cache/dist/esm/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/minipass/dist/esm/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/ignore.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/processor.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/loader.mjs",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/hooks.mjs",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/mock-service-client.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/mock-service.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/is-relative-require.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/export-line.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/munge-mocks.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/resolve-mock-entry-point.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/service-key.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/commonjs/service-key.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/require-resolve.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/call-site-like.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-all-conditional-values.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-all-conditions.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-unique-condition-sets.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-all-exports.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-all-local-imports.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-conditional-value.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-import.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/is-windows.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/parse.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-conditional-values-list.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/errors.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-named-exports-list.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/read-pkg.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-export.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/star-glob.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/to-path.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/file-exists.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/find-dep-package.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/to-file-url.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-dependency-export.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-package-import.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/find-star-match.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/walk-up-path/dist/mjs/index.js",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/src/classes/BTResponseError.ts",
+    "/Users/leonj/Development/bigmacstore/server-apps/node/src/classes/CustomError.ts"
+  ],
+  "sources": {
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/read-json.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/read-json.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/src/index.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/src/index.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/glob.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/src/glob.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/has-magic.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/src/has-magic.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/assert-valid-pattern.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/src/assert-valid-pattern.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/ast.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/src/ast.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/escape.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/src/escape.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/src/unescape.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/path-scurry/dist/esm/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/path-scurry/src/index.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/pattern.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/src/pattern.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/src/walker.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/minimatch/src/brace-expressions.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/lru-cache/dist/esm/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/lru-cache/src/index.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/minipass/dist/esm/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/minipass/src/index.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/ignore.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/src/ignore.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/dist/esm/processor.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/node_modules/glob/src/processor.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/mock-service.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/src/mock-service.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/src/index.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/index.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/is-relative-require.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/is-relative-require.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/export-line.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/src/export-line.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/munge-mocks.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/src/munge-mocks.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/resolve-mock-entry-point.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/src/resolve-mock-entry-point.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/esm/service-key.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/src/service-key.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/dist/commonjs/service-key.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/mock/src/service-key-cjs.cts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/require-resolve.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/src/require-resolve.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/call-site-like.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/src/call-site-like.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-all-conditional-values.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/get-all-conditional-values.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-all-conditions.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/get-all-conditions.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-unique-condition-sets.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/get-unique-condition-sets.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-all-exports.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/resolve-all-exports.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-all-local-imports.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/resolve-all-local-imports.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-conditional-value.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/resolve-conditional-value.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-import.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/resolve-import.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/is-windows.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/is-windows.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/dist/esm/parse.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/@tapjs/stack/src/parse.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-conditional-values-list.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/get-conditional-values-list.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/errors.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/errors.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/get-named-exports-list.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/get-named-exports-list.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/read-pkg.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/read-pkg.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-export.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/resolve-export.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/star-glob.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/star-glob.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/to-path.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/to-path.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/file-exists.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/file-exists.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/find-dep-package.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/find-dep-package.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/to-file-url.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/to-file-url.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-dependency-export.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/resolve-dependency-export.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/resolve-package-import.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/resolve-package-import.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/dist/esm/find-star-match.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/resolve-import/src/find-star-match.ts"
+    ],
+    "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/walk-up-path/dist/mjs/index.js": [
+      "/Users/leonj/Development/bigmacstore/server-apps/node/node_modules/walk-up-path/src/index.ts"
+    ]
+  },
+  "root": "505fd0d0-ea3c-4bd5-90d7-be0576425e91",
+  "externalID": "src/classes/BTResponseError.test.ts",
+  "code": 0,
+  "signal": null,
+  "runtime": 2186.876368
+}

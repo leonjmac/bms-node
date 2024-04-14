@@ -1,27 +1,18 @@
 import { DatabaseConnectionError } from './DatabaseConnectionError'
 import { CustomError } from './CustomError'
+import { test } from 'tap'
 
-describe('DatabaseConnectionError', () => {
+test('DatabaseConnectionError', (t) => {
   const code = 500
   const e = new DatabaseConnectionError()
   const message = `A problem occurred when attempting to connect to the database.`
   
-  it('should create an instance of "DatabaseConnectionError" which is a subclass of "CustomError"', () => {
-    expect(e).toBeInstanceOf(CustomError);
-  })
-
-  it('should return 500', () => {
-    expect(e).toHaveProperty('statusCode', code)
-  })
-
-  it('should return correct message', () => {
-    expect(e).toHaveProperty('message', `Code: ${code} - ${message}`)
-  })
-
-  it('should return correct reasons', () => {
-    expect(e.serializeErrors()).toMatchObject({
-      code,
-      message
-    })
-  })
+  t.ok(e instanceof CustomError, 'should be instance of CustomError')
+  t.equal(e.statusCode, code, 'should return 500')
+  t.equal(e.message, `Code: ${code} - ${message}`, 'should return correct message')
+  t.same(e.serializeErrors(), { 
+    code, 
+    message 
+  }, 'should serialize errors')
+  t.end()
 })

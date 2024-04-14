@@ -1,26 +1,17 @@
 import { BadRequestError } from './BadRequestError'
 import { CustomError } from './CustomError'
+import { test } from 'tap'
 
-describe('BadRequestError', () => {
+test('BadRequestError', (t) => {
   const message = 'Test error message'
   const e = new BadRequestError(message)
-  
-  it('should create an instance of "BadRequestError" which is a subclass of "CustomError"', () => {
-    expect(e).toBeInstanceOf(CustomError);
-  })
 
-  it('should return 400', () => {
-    expect(e).toHaveProperty('statusCode', 400)
-  })
-
-  it('should return correct message', () => {
-    expect(e).toHaveProperty('reason', message)
-  })
-
-  it('should serialize errors', () => {
-    expect(e.serializeErrors()).toMatchObject({
-      code: 400,
-      message
-    })
-  })
+  t.ok(e instanceof CustomError, 'should be instance of CustomError')
+  t.equal(e.statusCode, 400, 'should return 400')
+  t.equal(e.reason, message, 'should return correct message')
+  t.same(e.serializeErrors(), { 
+    code: 400, 
+    message 
+  }, 'should serialize errors')
+  t.end()
 })

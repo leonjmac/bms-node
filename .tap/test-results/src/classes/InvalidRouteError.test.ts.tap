@@ -1,0 +1,10 @@
+TAP version 14
+# Subtest: InvalidRouteError
+    ok 1 - should be instance of CustomError
+    ok 2 - should return 404
+    ok 3 - should return correct message
+    ok 4 - should serialize errors
+    1..4
+ok 1 - InvalidRouteError # time=22.192ms
+
+1..1

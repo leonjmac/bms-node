@@ -14,7 +14,7 @@ export class BTResponseError<T> extends CustomError {
   serializeErrors() {
       let reason
 
-      if(this.error.transaction.status !== undefined) {
+      if(this.error.transaction?.status !== undefined) {
         reason = {
           status: this.error.transaction.status,
           responseCode: this.error.transaction.processorResponseCode,

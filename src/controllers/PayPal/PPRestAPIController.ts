@@ -1,15 +1,42 @@
 import express, { Request, Response } from 'express'
 import { executeRequest as paypalRest } from '../../helpers/PPRestAPIClient'
-import { IPayPalRestOptions } from '../../interfaces/IPayPalRestOptions'
+import { IPayPalRestOptions, IPayPalRestOptionsData } from '../../interfaces/IPayPalRestOptions'
 
 const app = express.Router()
+
+const configurePayPalOrderRequest = (data: IPayPalRestOptionsData) => {
+  const payload = data.order || data.invoice
+  return {
+    intent: data.intent || 'CAPTURE',
+    purchase_units: [
+      {
+        reference_id: payload!.reference,
+        amount: {
+          currency_code: payload?.items?.at(0)?.currencyCode || 'GBP',
+          value: `${payload!.total}`
+        },
+        items: payload?.items && payload!.items.map(item => {
+          return {
+            name: item.description,
+            quantity: item.quantity,
+            sku: item.sku,
+            unit_amount: {
+              currency_code: item.currencyCode,
+              value: `${item.totalPrice}`
+            }
+          }
+        })
+      }
+    ]    
+  }
+}
 
 const performRequest = async (options: IPayPalRestOptions) => {
   try {
     const response = await paypalRest(
       options.method,
       options.path,
-      options.data,
+      options.data.order || options.data.invoice ? configurePayPalOrderRequest(options.data) : options.data,
       options.idempotent
     )
     return response

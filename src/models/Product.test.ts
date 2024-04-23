@@ -1,4 +1,3 @@
-import LocalPayment from './LocalPayment'
 import Product from './Product'
 import { IProductAttrs, IProductCategory } from '../interfaces/IProduct'
 import ISOCurrencyCode from '../interfaces/ISOCurrencyCode'

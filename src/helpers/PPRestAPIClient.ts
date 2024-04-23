@@ -53,7 +53,7 @@ const executeRequest = async (method: Method, url: string, data?: Object, idempo
       url,
       data
     })
-    return response.data
+    return { response: response.data, statusCode: response.status }
 
   } catch (error) {
     // @ts-ignore

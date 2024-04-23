@@ -30,7 +30,10 @@ const retrieveProdcut = async (req: Request, res: Response) => {
 // Checkout routes
 const prepareCheckout = async (req: Request, res: Response) => {
   try {
-    const response = await setupCheckout(req.body.data, req.body.platform)
+    // Add check to see if request.body payload is valid
+    const response = await setupCheckout({
+      ...req.body
+    })
     res.status(201).send(response)
   } catch (err) {
     throw err
@@ -39,7 +42,7 @@ const prepareCheckout = async (req: Request, res: Response) => {
 
 const processCheckout = async (req: Request, res: Response) => {
   try {
-    const response = await processCheckout(req.body.data, req.body.platform)
+    const response = await processCheckout(req.body.platform, req.body.order || req.body.invoice)
     res.status(201).send(response)
   } catch (err) {
     throw err

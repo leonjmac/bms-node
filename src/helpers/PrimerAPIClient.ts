@@ -1,6 +1,7 @@
-import axios, { Method } from 'axios'
+import axios from 'axios'
 
 import { v4 as uuid } from 'uuid'
+import { IPrimerOptions } from '../interfaces/IPrimerOptions'
 
 const client = axios.create({
   baseURL: ' https://api.sandbox.primer.io',
@@ -9,18 +10,16 @@ const client = axios.create({
   }
 })
 
-const executeRequest = async (method: Method, url: string, data?: Object, version?: number, idempotent?: boolean) => {
+const executeRequest = async (options: IPrimerOptions) => {
   try {
-    if (version === undefined) version = Number(process.env.PRIMER_API_VERSION!)
+    if (options.version === undefined) options.version = Number(process.env.PRIMER_API_VERSION!)
     const response = await client.request({
       headers: {
-        'X-Api-Version': version,
-        'X-Idempotency-Key': idempotent ? uuid() : undefined,
+        'X-Api-Version': options.version,
+        'X-Idempotency-Key': options.idempotent ? uuid() : undefined,
         'legacy-workflows': false
       },
-      method,
-      url,
-      data
+      ...options
     })
     return response.data
 

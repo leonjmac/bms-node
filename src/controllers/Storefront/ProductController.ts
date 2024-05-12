@@ -1,6 +1,6 @@
 import fs from 'fs'
 import Product from '../../models/Product'
-import { IProductAttrs, IProductCategory } from '../../interfaces/IProduct'
+import { IProductAttrs, IProductKind } from '../../interfaces/IProduct'
 import { AppLogger, AppLoggerLevel } from '../../middlewares/app-logger'
 
 const seedProducts = async () => {
@@ -31,11 +31,11 @@ const fetchProduct = async (id: string) => {
   }
 }
 
-const fetchProducts = async (category?: IProductCategory) => {
+const fetchProducts = async (kind?: IProductKind) => {
   try {
     return await Product
       .find({})
-      .where({ category })
+      .where({ kind })
   } catch (err) {
     throw err
   }

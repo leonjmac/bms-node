@@ -75,7 +75,7 @@ const createTransaction = async (options: IProcessCheckoutOptions) => {
       case ITransactionPlatform.braintree:
         // Check if the request is for Braintree
         if(options.braintree === undefined) throw new BadRequestError('Invalid Braintree request.')
-        
+
         // Check if the request is for Braintree GraphQL
         if(options.braintree.useGraphQL) {
           if(options.braintree.chainedRequest !== undefined) {
@@ -83,11 +83,15 @@ const createTransaction = async (options: IProcessCheckoutOptions) => {
           }
           return await btGQLRequest(
             options.braintree.query,
-            options.braintree.variables
+            {
+              ...options.braintree.variables,
+              orderId: options.orderId
+            }
           )
         } else {
           return await gateway.transaction.sale({
-            ...options.braintree.transaction!
+            ...options.braintree.transaction!,
+            orderId: options.orderId
           })
         }
         

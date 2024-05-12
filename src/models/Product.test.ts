@@ -1,5 +1,5 @@
 import Product from './Product'
-import { IProductAttrs, IProductCategory } from '../interfaces/IProduct'
+import { IProductAttrs, IProductKind } from '../interfaces/IProduct'
 import ISOCurrencyCode from '../interfaces/ISOCurrencyCode'
 import { test } from 'tap'
 import { attemptDatabaseConnection, attemptDatabaseDisconnection } from '../middlewares/db-connector'
@@ -8,7 +8,8 @@ test('Product', async (t) => {
   await attemptDatabaseConnection(false)
   const attrs = {
     name: 'test-product-name',
-    category: IProductCategory.video,
+    category: 0,
+    kind: IProductKind.video,
     description: 'test-product-description',
     promote: true,
     sku: 'test-product-sku',
@@ -26,6 +27,7 @@ test('Product', async (t) => {
   t.ok(product, 'should return product')
   t.equal(product.name, attrs.name, 'should return name')
   t.equal(product.category, attrs.category, 'should return category')
+  t.equal(product.kind, attrs.kind, 'should return kind')
   t.equal(product.description, attrs.description, 'should return description')
   t.equal(product.promote, attrs.promote, 'should return promote')
   t.equal(product.sku, attrs.sku, 'should return sku')

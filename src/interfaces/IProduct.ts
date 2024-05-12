@@ -4,7 +4,8 @@ import ISOCurrencyCode from './ISOCurrencyCode'
 export interface IProductAttrs {
   name: string
   description: string
-  category: IProductCategory
+  category?: number
+  kind: IProductKind
   promote?: boolean
   sku: string
   baseUnitPrice: number
@@ -16,7 +17,7 @@ export interface IProductAttrs {
   isDeliverable?: boolean
 }
 
-export enum IProductCategory {
+export enum IProductKind {
   audio,
   crypto,
   game,

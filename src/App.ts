@@ -6,6 +6,9 @@ import { BraintreeGraphQLController } from './controllers/BraintreeGraphQL/Brain
 import { BraintreeAuthorizationController } from './controllers/BraintreeSDK/BTAuthorizationController'
 import { BraintreeTransactionController } from './controllers/BraintreeSDK/BTTransactionController'
 
+import { PPRestAPIController } from './controllers/PayPal/PPRestAPIController'
+import { PPClassicAPIController } from './controllers/PayPal/PPClassicAPIController'
+
 import { ClientSessionController } from './controllers/Primer/ClientSessionController'
 import { PaymentMethodsController } from './controllers/Primer/PaymentMethodsController'
 import { PaymentsController } from './controllers/Primer/PaymentsController'
@@ -23,6 +26,10 @@ app.use(express.json())
 app.use('/braintree/graphql', BraintreeGraphQLController)
 app.use('/braintree/authorization', BraintreeAuthorizationController)
 app.use('/braintree/transaction', BraintreeTransactionController)
+
+// PAYPAL ROUTES
+app.use('/paypal/classic', PPClassicAPIController)
+app.use('/paypal/rest', PPRestAPIController)
 
 // PRIMER ROUTES
 app.use('/primer/client-session', ClientSessionController)

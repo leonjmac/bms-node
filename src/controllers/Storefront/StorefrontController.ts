@@ -3,17 +3,18 @@ import { setupCheckout, createTransaction } from './CheckoutController'
 import { fetchCustomers } from './CustomerController'
 import { registerPayment } from './LocalPaymentController'
 import { fetchProduct, fetchProducts, registerProduct, seedProducts, updateProduct } from './ProductController'
-import { IProductCategory } from '../../interfaces/IProduct'
+import { IProductKind } from '../../interfaces/IProduct'
 import { ICustomerReferenceType } from '../../interfaces/ICustomer'
+import { registerOrder } from './OrderController'
 
 const app = express.Router()
 
 // Product routes
 const retrieveProducts = async (req: Request, res: Response) => {
   try {
-    const category = req.query.category as unknown as IProductCategory || undefined;  
-    const products = await fetchProducts(category)
-    res.status(products.length > 0 ? 200 : 204).send({ products })
+    const kind = req.query.kind as unknown as IProductKind || undefined;
+    const products = await fetchProducts(kind)
+    res.status(products.length > 0 ? 200 : 204).send(products)
   } catch (err) {
     throw err
   }
@@ -22,7 +23,7 @@ const retrieveProducts = async (req: Request, res: Response) => {
 const retrieveProduct = async (req: Request, res: Response) => {
   try {
     const product = await fetchProduct(req.params.id)
-    res.status(product ? 200 : 204).send({ product })
+    res.status(product ? 200 : 204).send(product)
   } catch (err) {
     throw err
   }
@@ -31,7 +32,7 @@ const retrieveProduct = async (req: Request, res: Response) => {
 const createProduct = async (req: Request, res: Response) => {
   try {
     const product = await registerProduct(req.body)
-    res.status(201).send({ product })
+    res.status(201).send(product)
   } catch (err) {
     throw err
   }
@@ -40,7 +41,7 @@ const createProduct = async (req: Request, res: Response) => {
 const updateProductDetail = async (req: Request, res: Response) => {
   try {
     const product = await updateProduct(req.params.id, req.body)
-    res.status(200).send({ product })
+    res.status(200).send(product)
   } catch (err) {
     throw err
   }
@@ -61,13 +62,13 @@ const prepareCheckout = async (req: Request, res: Response) => {
 
 const processCheckout = async (req: Request, res: Response) => {
   try {
+    let order = req.body.order && await registerOrder(req.body.order) || null
+
     // TODO: Add check to see if request.body payload is valid with middleware    
     const response = await createTransaction({
-      ...req.body
+      ...req.body,
+      orderId: order.id
     })
-
-    // Register transaction in DB
-
     // Send response
     res.status(201).send(response)
   } catch (err) {

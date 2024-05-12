@@ -19,9 +19,12 @@ const URL_PARAMS = new URLSearchParams({
 
 const configureParams = (payload: Object) => {
   const params = URL_PARAMS
-  Object.keys(payload).forEach(key => {
+  // @ts-ignore
+  params.append('METHOD', payload['method'])
+  // @ts-ignore
+  Object.keys(payload.data).forEach(key => {
     // @ts-ignore
-    const value = payload[key]
+    const value = payload.data[key]
     if(typeof value === 'object') {
       value.map((item: Array<string> | Object, idx: number) => {
         Object.keys(item).forEach((k: string) => {
@@ -30,7 +33,7 @@ const configureParams = (payload: Object) => {
         })
       })
     } else {
-      if(value) params.append(key, value)
+      params.append(key.toUpperCase(), value)
     }
   })
   return params.toString()

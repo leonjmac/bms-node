@@ -21,7 +21,11 @@ const ProductSchema = new mongoose.Schema({
   },
   category: {
     type: Number,
-    required: true
+    required: false
+  },
+  kind: {
+    type: Number,
+    required: [true, 'Please specify a kind.']
   },
   promote: {
     type: Boolean

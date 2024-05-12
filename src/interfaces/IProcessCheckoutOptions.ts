@@ -6,6 +6,7 @@ import { IPrimerOptions } from './IPrimerOptions'
 
 export interface IProcessCheckoutOptions {
   platform: ITransactionPlatform
+  orderId?: string
   braintree?: IBraintreeTransactionOptions,
   paypal?: {
     classic: IPayPalClassicOptions,

@@ -1,14 +1,15 @@
 import { configureParams, executeRequest as paypalClassic } from '../../helpers/PPClassicAPIClient'
 import { executeRequest as primer } from '../../helpers/PrimerAPIClient'
-import { IInvoiceAttrs } from '../../interfaces/IInvoice'
-import { IOrderAttrs } from '../../interfaces/IOrder'
 import { ITransactionPlatform } from '../../interfaces/ITransaction'
 
+import { gateway } from '../../helpers/BTGatewayClient'
+import { performRequest as btGQLRequest, performChainedRequest as btGQLChainedRequest } from '../../helpers/BTGraphQLClient'
 import { generateClientToken } from '../BraintreeSDK/BTAuthorizationController'
 import { performRestRequest } from '../PayPal/PPRestAPIController'
 import { BadRequestError } from '../../classes/BadRequestError'
 
 import { ISetupCheckoutOptions } from '../../interfaces/ISetupCheckoutOptions'
+import { IProcessCheckoutOptions } from '../../interfaces/IProcessCheckoutOptions'
 
 const setupCheckout = async (options: ISetupCheckoutOptions) => {
   try {
@@ -23,6 +24,10 @@ const setupCheckout = async (options: ISetupCheckoutOptions) => {
         return await generateClientToken({
           ...options.braintree
         })
+
+      case ITransactionPlatform.hyperwallet:
+        // TODO: Implement Hyperwallet
+        break
 
       case ITransactionPlatform.paypal:
         // Check if the request is for PayPal REST API
@@ -45,7 +50,7 @@ const setupCheckout = async (options: ISetupCheckoutOptions) => {
       case ITransactionPlatform.primer:
         // Check if the request is for Primer
         if(options.primer === undefined) throw new BadRequestError('Invalid Primer request.')
-        return await primer( {
+        return await primer({
           ...options.primer
         })
 
@@ -61,20 +66,39 @@ const setupCheckout = async (options: ISetupCheckoutOptions) => {
   }
 }
 
-const createTransaction = async (platform: ITransactionPlatform, data?: IInvoiceAttrs | IOrderAttrs) => {
+const createTransaction = async (options: IProcessCheckoutOptions) => {
   try {
-    switch (platform) {
+    switch (options.platform) {
       case ITransactionPlatform.adyen:
         break
 
       case ITransactionPlatform.braintree:
-        break
-
+        // Check if the request is for Braintree
+        if(options.braintree === undefined) throw new BadRequestError('Invalid Braintree request.')
+        
+        // Check if the request is for Braintree GraphQL
+        if(options.braintree.useGraphQL) {
+          if(options.braintree.chainedRequest !== undefined) {
+            return await btGQLChainedRequest(options.braintree.chainedRequest)
+          }
+          return await btGQLRequest(
+            options.braintree.query,
+            options.braintree.variables
+          )
+        } else {
+          return await gateway.transaction.sale({
+            ...options.braintree.transaction!
+          })
+        }
+        
       case ITransactionPlatform.paypal:
         break
 
       case ITransactionPlatform.primer:
-        break
+        if(options.primer === undefined) throw new BadRequestError('Invalid Primer request.')
+        return await primer({
+          ...options.primer
+        })
 
       case ITransactionPlatform.stripe:
         break

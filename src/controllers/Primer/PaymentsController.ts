@@ -5,7 +5,11 @@ const router = express.Router()
 
 const createPayment = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', '/payments', req.body)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: '/payments', 
+      ...req.body
+    })
     res.status(201).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -14,7 +18,10 @@ const createPayment = async (req: Request, res: Response) => {
 
 const authorizePayment = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payments/${req.params.id}/authorize`)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payments/${req.params.id}/authorize`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -23,7 +30,10 @@ const authorizePayment = async (req: Request, res: Response) => {
 
 const capturePayment = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payments/${req.params.id}/capture`)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payments/${req.params.id}/capture`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -32,7 +42,10 @@ const capturePayment = async (req: Request, res: Response) => {
 
 const cancelPayment = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payments/${req.params.id}/cancel`)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payments/${req.params.id}/cancel`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -41,7 +54,10 @@ const cancelPayment = async (req: Request, res: Response) => {
 
 const refundPayment = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payments/${req.params.id}/refund`)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payments/${req.params.id}/refund`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -50,7 +66,10 @@ const refundPayment = async (req: Request, res: Response) => {
 
 const resumePayment = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payments/${req.params.id}/resume`)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payments/${req.params.id}/resume`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -59,7 +78,11 @@ const resumePayment = async (req: Request, res: Response) => {
 
 const adjustAuthorization = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payments/${req.params.id}/adjust-authorization`, req.body)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payments/${req.params.id}/adjust-authorization`,
+      ...req.body
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -68,7 +91,10 @@ const adjustAuthorization = async (req: Request, res: Response) => {
 
 const fetchPayment = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('GET', `/payments/${req.params.id}`)
+    const response = await executeRequest({
+      method: 'GET', 
+      url: `/payments/${req.params.id}`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})

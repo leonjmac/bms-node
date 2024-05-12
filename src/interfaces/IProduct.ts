@@ -2,6 +2,7 @@ import { Document } from 'mongoose'
 import ISOCurrencyCode from './ISOCurrencyCode'
 
 export interface IProductAttrs {
+  name: string
   description: string
   category: IProductCategory
   promote?: boolean

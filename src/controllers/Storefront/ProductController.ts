@@ -1,5 +1,19 @@
+import fs from 'fs'
 import Product from '../../models/Product'
 import { IProductAttrs, IProductCategory } from '../../interfaces/IProduct'
+import { AppLogger, AppLoggerLevel } from '../../middlewares/app-logger'
+
+const seedProducts = async () => {
+  try {
+    const products: IProductAttrs[] = JSON.parse(fs.readFileSync('seeds/products.json', 'utf-8'))
+    products.map(async product => {
+      await Product.build(product).save({ validateBeforeSave: true })
+    })
+    AppLogger(AppLoggerLevel.INFO, 'Products seeded.')
+  } catch (err) {
+    throw err
+  }
+}
 
 const registerProduct = async (data: IProductAttrs) => {
   try {
@@ -35,4 +49,4 @@ const updateProduct = async (id: string, data: IProductAttrs) => {
   }
 }
 
-export { fetchProduct, fetchProducts, registerProduct, updateProduct }
+export { fetchProduct, fetchProducts, registerProduct, updateProduct, seedProducts }

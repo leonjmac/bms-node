@@ -19,6 +19,7 @@ export interface ITransaction extends ITransactionAttrs, Document {
 export enum ITransactionPlatform {
   adyen,
   braintree,
+  hyperwallet,
   paypal,
   primer,
   stripe

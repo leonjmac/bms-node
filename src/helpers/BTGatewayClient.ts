@@ -1,4 +1,5 @@
 import braintree, { BraintreeGateway } from 'braintree'
+import '../../env'
 
 const gateway = new BraintreeGateway({
   environment: braintree.Environment.Sandbox,

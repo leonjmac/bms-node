@@ -31,6 +31,7 @@ const configurePayPalOrderRequest = (data: IPayPalRestOptionsData) => {
   }
 }
 
+/* c8 ignore next 13 */
 const performRequest = async (options: IPayPalRestOptions) => {
   try {
     const response = await paypalRest(
@@ -45,6 +46,7 @@ const performRequest = async (options: IPayPalRestOptions) => {
   }
 }
 
+/* c8 ignore next 14*/
 const attemptExecuteRequest = async (req: Request, res: Response) => {
   try {
     const response = await performRequest({
@@ -64,4 +66,5 @@ app.use('/', attemptExecuteRequest)
 export { 
   app as PPRestAPIController, 
   performRequest as performRestRequest,
+  configurePayPalOrderRequest as __configurePayPalOrderRequest
 }

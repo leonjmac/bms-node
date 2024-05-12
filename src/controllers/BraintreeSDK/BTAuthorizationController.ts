@@ -39,4 +39,4 @@ const attemptGenerateClientToken = async (req: Request, res: Response) => {
 
 router.post('/generate-client-token', attemptGenerateClientToken)
 
-export { router as BTAuthorizationController, generateClientToken }
+export { router as BraintreeAuthorizationController, generateClientToken }

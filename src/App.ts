@@ -3,6 +3,7 @@ import 'express-async-errors'
 import cors from 'cors'
 
 import { BraintreeGraphQLController } from './controllers/BraintreeGraphQL/BraintreeGraphQLController'
+import { BraintreeAuthorizationController } from './controllers/BraintreeSDK/BTAuthorizationController'
 import { BraintreeTransactionController } from './controllers/BraintreeSDK/BTTransactionController'
 
 import { ClientSessionController } from './controllers/Primer/ClientSessionController'
@@ -20,6 +21,7 @@ app.use(express.json())
 
 // BRAINTRREE ROUTES
 app.use('/braintree/graphql', BraintreeGraphQLController)
+app.use('/braintree/authorization', BraintreeAuthorizationController)
 app.use('/braintree/transaction', BraintreeTransactionController)
 
 // PRIMER ROUTES

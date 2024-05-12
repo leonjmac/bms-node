@@ -5,7 +5,11 @@ const router = express.Router()
 
 const savePaymentMethod = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payment-instruments/${req.params.id}/vault`, req.body)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payment-instruments/${req.params.id}/vault`, 
+      ...req.body
+    })
     res.status(201).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -14,7 +18,10 @@ const savePaymentMethod = async (req: Request, res: Response) => {
 
 const fetchPaymentMethods = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('GET', `/payment-instruments?customer_id=${req.params.id}`)
+    const response = await executeRequest({
+      method: 'GET', 
+      url: `/payment-instruments?customer_id=${req.params.id}`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -23,7 +30,10 @@ const fetchPaymentMethods = async (req: Request, res: Response) => {
 
 const deletePaymentMethod = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('DELETE', `/payment-instruments/${req.params.id}`)
+    const response = await executeRequest({
+      method: 'DELETE', 
+      url: `/payment-instruments/${req.params.id}`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})
@@ -32,7 +42,10 @@ const deletePaymentMethod = async (req: Request, res: Response) => {
 
 const setDefaultPaymentMethod = async (req: Request, res: Response) => {
   try {
-    const response = await executeRequest('POST', `/payment-instruments/${req.params.id}/default`)
+    const response = await executeRequest({
+      method: 'POST', 
+      url: `/payment-instruments/${req.params.id}/default`
+    })
     res.status(200).send(response)
   } catch (error) {
     res.status(400).send({error})

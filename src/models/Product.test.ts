@@ -7,6 +7,7 @@ import { attemptDatabaseConnection, attemptDatabaseDisconnection } from '../midd
 test('Product', async (t) => {
   await attemptDatabaseConnection(false)
   const attrs = {
+    name: 'test-product-name',
     category: IProductCategory.video,
     description: 'test-product-description',
     promote: true,
@@ -23,6 +24,7 @@ test('Product', async (t) => {
   const product = await Product.build(attrs).save()
 
   t.ok(product, 'should return product')
+  t.equal(product.name, attrs.name, 'should return name')
   t.equal(product.category, attrs.category, 'should return category')
   t.equal(product.description, attrs.description, 'should return description')
   t.equal(product.promote, attrs.promote, 'should return promote')

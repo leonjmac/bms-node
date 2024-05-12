@@ -7,6 +7,9 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+# Seeders
+seeds
+
 # Tap files
 /.tap
 *.tap/processinfo/*
